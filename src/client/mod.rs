@@ -1,3 +1,5 @@
+mod general;
+
 use reqwest::{
     Client,
     Error,
