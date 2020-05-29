@@ -1,4 +1,5 @@
 mod general;
+mod market;
 
 use reqwest::{
     Client,
