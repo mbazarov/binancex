@@ -58,8 +58,8 @@ impl BinancexBuilder {
         self
     }
 
-    pub fn tcp_nodelay(mut self, flag: bool) -> Self {
-        self.tcp_nodelay = flag;
+    pub fn tcp_nodelay(mut self, enabled: bool) -> Self {
+        self.tcp_nodelay = enabled;
         self
     }
 
@@ -73,8 +73,8 @@ impl BinancexBuilder {
             .connect_timeout(self.connect_timeout.clone())
             .timeout(self.request_timeout.clone());
 
-        if self.tcp_nodelay {
-            client = client.tcp_nodelay()
+        if !self.tcp_nodelay {
+            client = client.tcp_nodelay_(false);
         }
 
         if let Some(proxy) = self.proxy {
