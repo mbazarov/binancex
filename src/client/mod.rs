@@ -1,12 +1,15 @@
 mod general;
 mod market;
+pub mod websocket;
 
 use reqwest::{
     Client,
     Error,
     Proxy,
 };
+
 use std::time::Duration;
+
 
 static API1_HOST: &'static str = "https://www.binance.com";
 
