@@ -1,7 +1,7 @@
 use super::{API1_HOST, Binancex};
 use crate::{
     error::{BinancexError, BinanceResponse},
-    models::general::ExchangeInfo,
+    scheme::general::ExchangeInfo,
 };
 
 
