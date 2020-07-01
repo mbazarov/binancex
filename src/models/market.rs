@@ -1,5 +1,5 @@
 use rust_decimal::Decimal;
-use serde_derive::Deserialize;
+use serde::Deserialize;
 
 
 #[derive(Copy, Clone, Debug)]
