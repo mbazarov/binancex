@@ -1,4 +1,4 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
 
 #[derive(Clone, Debug, Deserialize)]
@@ -80,11 +80,23 @@ pub enum SymbolFilter {
     },
 }
 
+#[derive(Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
+pub enum SymbolStatus {
+    PreTrading,
+    Trading,
+    PostTrading,
+    EndOfDay,
+    Halt,
+    AuctionMatch,
+    Break,
+}
+
 #[derive(Clone, Debug, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Symbol {
     pub symbol: String,
-    pub status: String,
+    pub status: SymbolStatus,
     pub base_asset: String,
     pub base_asset_precision: u64,
     pub quote_asset: String,
