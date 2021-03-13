@@ -36,7 +36,18 @@ pub enum ExchangeFilter {
 #[serde(tag = "filterType", rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum SymbolFilter {
     #[serde(rename_all = "camelCase")]
-    IcebergParts { limit: u64 },
+    PriceFilter {
+        min_price: String,
+        max_price: String,
+        tick_size: String,
+    },
+
+    #[serde(rename_all = "camelCase")]
+    PercentPrice {
+        multiplier_up: String,
+        multiplier_down: String,
+        avg_price_mins: Option<u64>,
+    },
 
     #[serde(rename_all = "camelCase")]
     LotSize {
@@ -49,38 +60,41 @@ pub enum SymbolFilter {
     MinNotional {
         min_notional: String,
         apply_to_market: bool,
-        avg_price_mins: u64
+        avg_price_mins: Option<u64>,
     },
 
     #[serde(rename_all = "camelCase")]
-    MaxNumAlgoOrders { max_num_algo_orders: u64 },
-
-    #[serde(rename_all = "camelCase")]
-    MaxNumOrders { max_num_orders: u64 },
+    IcebergParts {
+        limit: Option<u64>
+    },
 
     #[serde(rename_all = "camelCase")]
     MarketLotSize {
         min_qty: String,
         max_qty: String,
-        step_size: String
+        step_size: String,
     },
 
     #[serde(rename_all = "camelCase")]
-    PriceFilter {
-        min_price: String,
-        max_price: String,
-        tick_size: String
+    MaxNumOrders {
+        max_num_orders: Option<u64>
     },
 
     #[serde(rename_all = "camelCase")]
-    PercentPrice {
-        multiplier_up: String,
-        multiplier_down: String,
-        avg_price_mins: u64
+    MaxNumAlgoOrders {
+        max_num_algo_orders: Option<u64>
     },
+
+    #[serde(rename_all = "camelCase")]
+    MaxNumIcebergOrders {
+        max_num_iceberg_orders: u16
+    },
+
+    #[serde(rename_all = "camelCase")]
+    MaxPosition { max_position: String },
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum SymbolStatus {
     PreTrading,
