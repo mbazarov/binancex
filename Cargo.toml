@@ -4,13 +4,19 @@ version = "0.1.0"
 authors = ["bazarov <mikhail.bazaroff@gmail.com>"]
 edition = "2018"
 
+[workspace]
+members = [
+    "binance-schemes"
+]
 
 [dependencies]
-futures = "0.3"
-reqwest = { version = "0.10", features = ["json", "rustls-tls", "trust-dns"] }
-rust_decimal = "1.6"
-serde = { version = "1.0", features = ["derive"]}
+binance-schemes = { path = "binance-schemes" }
+
+reqwest = { version = "0.11", features = ["gzip", "json", "socks", "rustls-tls", "trust-dns"] }
+serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-tokio = { version = "0.2", features = ["full"] }
-tokio-tungstenite = { version = "0.10", features = ["tls"] }
 url = "2.1"
+
+
+[dev-dependencies]
+tokio = { version = "1.0.3", default-features = false, features = ["macros", "rt"] }

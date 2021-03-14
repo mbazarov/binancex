@@ -1,43 +1,8 @@
-use super::{
-    market::{OrderBook, Ask, Bid}
-};
+use super::market::{Ask, Bid};
 
 use rust_decimal::Decimal;
 use serde::{Deserialize, Serialize};
 
-
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
-pub enum Subscription {
-    UserData(String),            // listen key
-    AggregateTrade(String),      // symbol
-    Trade(String),               // symbol
-    Candlestick(String, String), // (symbol, interval)
-    MiniTicker(String),          // symbol
-    MiniTickerAll,
-    Ticker(String),              // symbol
-    TickerAll,
-    OrderBook(String, i64),      // (symbol, depth)
-    Depth(String, Option<u16>),  // (symbol, interval)
-}
-
-#[derive(Debug, Clone, Serialize)]
-pub enum BinanceWebsocketMessage {
-    UserOrderUpdate(UserOrderUpdate),
-    UserAccountUpdate(AccountUpdate),
-    AggregateTrade(AggregateTrade),
-    Trade(TradeMessage),
-    Candlestick(CandelStickMessage),
-    MiniTicker(MiniTicker),
-    MiniTickerAll(Vec<MiniTicker>),
-    Ticker(Ticker),
-    TickerAll(Vec<Ticker>),
-    OrderBook(OrderBook),
-    Depth(Depth),
-    Ping,
-    Pong,
-    Close,
-    Binary(Vec<u8>), // Unexpected, unparsed
-}
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]

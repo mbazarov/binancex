@@ -1,6 +1,5 @@
 mod general;
 mod market;
-pub mod websocket;
 
 use reqwest::{
     Client,
@@ -77,7 +76,7 @@ impl BinancexBuilder {
             .timeout(self.request_timeout.clone());
 
         if !self.tcp_nodelay {
-            client = client.tcp_nodelay_(false);
+            client = client.tcp_nodelay(false);
         }
 
         if let Some(proxy) = self.proxy {

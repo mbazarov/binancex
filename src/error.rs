@@ -1,5 +1,4 @@
 use serde::Deserialize;
-use tokio_tungstenite::tungstenite;
 
 
 #[derive(Clone, Debug, Deserialize)]
@@ -20,7 +19,6 @@ pub enum BinancexError {
     Binance(BinanceResponseError),
     Parse(serde_json::Error),
     Reqwest(reqwest::Error),
-    Websocket(tungstenite::Error),
 }
 
 impl From<BinanceResponseError> for BinancexError {
@@ -33,10 +31,6 @@ impl From<serde_json::error::Error> for BinancexError {
 
 impl From<reqwest::Error> for BinancexError {
     fn from(err: reqwest::Error) -> Self { BinancexError::Reqwest(err) }
-}
-
-impl From<tungstenite::Error> for BinancexError {
-    fn from(err: tungstenite::Error) -> Self { BinancexError::Websocket(err) }
 }
 
 

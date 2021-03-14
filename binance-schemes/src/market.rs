@@ -11,6 +11,7 @@ pub enum DepthLimit {
     Limit100 = 100,
     Limit500 = 500,
     Limit1000 = 1000,
+    Limit5000 = 5000,
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize, PartialEq, Eq, PartialOrd, Ord)]

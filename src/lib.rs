@@ -1,6 +1,7 @@
 mod client;
 pub mod error;
-pub mod scheme;
 
-pub use client::{Binancex, websocket::BinancexWebsocket};
+pub use binance_schemes as schemes;
+
+pub use client::Binancex;
 pub use error::BinancexError;
