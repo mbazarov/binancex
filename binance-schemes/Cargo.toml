@@ -1,0 +1,16 @@
+[package]
+name = "binance-schemes"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+strict-enums = []
+
+[dependencies]
+binance-types = { path = "../binance-types" }
+
+rust_decimal = "1.23"
+serde = { version = "1.0", features = ["derive"] }
+
+[dev-dependencies]
+serde_json = "1.0"

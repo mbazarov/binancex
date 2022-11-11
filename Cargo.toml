@@ -1,0 +1,63 @@
+[package]
+name = "binancex"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+members = [
+    "binance-schemes",
+    "binance-types",
+]
+
+[features]
+default = ["native-tls", "serde_json"]
+native-tls = ["reqwest/native-tls"]
+rustls-tls = ["reqwest/rustls-tls"]
+serde_json = ["dep:serde_json"]
+simd_json = ["dep:simd-json"]
+strict-enums = ["schemes-strict-enums", "types-strict-enums"]
+schemes-strict-enums = ["binance-schemes/strict-enums"]
+types-strict-enums = ["binance-types/strict-enums"]
+
+[dependencies]
+binance-schemes = { path = "binance-schemes" }
+binance-types = { path = "binance-types" }
+
+chrono = "0.4"
+hex = "0.4"
+http = "0.2"
+itoa = "1.0"
+ring = "0.16"
+reqwest = { version = "0.11", default_features = false, features = [
+    "gzip",
+    "trust-dns"
+]}
+rust_decimal = "1.26"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0", optional = true }
+simd-json = { version = "0.7", optional = true }
+serde_qs = "0.10"
+
+[dev-dependencies]
+affinity = "0.1"
+criterion = "0.4"
+httpmock = "0.6"
+simd-json = { version = "0.7" }
+tokio = { version = "1.21", default-features = false, features = ["macros", "rt"] }
+
+[target.'cfg(not(target_env = "msvc"))'.dependencies]
+tikv-jemallocator = "0.5"
+
+[profile.bench]
+opt-level = 3
+debug = false
+debug-assertions = false
+overflow-checks = false
+lto = true
+incremental = false
+codegen-units = 1
+rpath = false
+
+[[bench]]
+name = "json_deserialization"
+harness = false

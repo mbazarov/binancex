@@ -1,0 +1,16 @@
+[
+  {
+    "symbol": "BNBBTC",
+    "bidPrice": "0.01456900",
+    "bidQty": "31.85700000",
+    "askPrice": "0.01457000",
+    "askQty": "0.48300000"
+  },
+  {
+    "symbol": "BTCUSDT",
+    "bidPrice": "20174.27000000",
+    "bidQty": "0.10561000",
+    "askPrice": "20176.42000000",
+    "askQty": "0.00046000"
+  }
+]

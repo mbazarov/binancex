@@ -1,0 +1,30 @@
+[
+    {
+        "symbol": "BNBBTC",
+        "openPrice": "0.01457600",
+        "highPrice": "0.01467800",
+        "lowPrice": "0.01447500",
+        "lastPrice": "0.01456800",
+        "volume": "45139.35500000",
+        "quoteVolume": "658.20119830",
+        "openTime": 1664924091180,
+        "closeTime": 1665010491180,
+        "firstId": 204850304,
+        "lastId": 204947535,
+        "count": 97232
+    },
+    {
+        "symbol": "BTCUSDT",
+        "openPrice": "20280.02000000",
+        "highPrice": "20384.85000000",
+        "lowPrice": "19730.00000000",
+        "lastPrice": "20179.37000000",
+        "volume": "312548.18732000",
+        "quoteVolume": "6283430960.41071180",
+        "openTime": 1664924094395,
+        "closeTime": 1665010494395,
+        "firstId": 1925392487,
+        "lastId": 1929931923,
+        "count": 4539437
+    }
+]

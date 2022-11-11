@@ -1,0 +1,20 @@
+[
+  {
+    "id": 2159790708,
+    "price": "17402.18000000",
+    "qty": "0.00058000",
+    "quoteQty": "10.09326440",
+    "time": 1668159514824,
+    "isBuyerMaker": true,
+    "isBestMatch": true
+  },
+  {
+    "id": 2159790709,
+    "price": "17402.18000000",
+    "qty": "0.00023000",
+    "quoteQty": "4.00250140",
+    "time": 1668159514824,
+    "isBuyerMaker": true,
+    "isBestMatch": true
+  }
+]
